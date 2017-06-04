@@ -1,28 +1,46 @@
-module.exports = () => {
+module.exports = (app) => {
   
-  switch (req.url) {
-  case '/':
-  case '/index':
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    fs.createReadStream(__dirname + '/public/index.html').pipe(res);
-    break;
-  case '/chat':
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    fs.createReadStream(__dirname + '/public/chat.html').pipe(res);
-    break;
-  case '/signin':
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    fs.createReadStream(__dirname + '/public/signin.html').pipe(res);
-    break;
-  case '/signup':
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    fs.createReadStream(__dirname + '/public/singup.html').pipe(res);
-    break;
-  default:
-    res.writeHead(404, {'Content-Type': 'text/html'});
-    fs.createReadStream(__dirname + '/public/404.html').pipe(res);
-    break;
-  }
-  console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  var bodyParser = require('body-parser'),
+      urlencodedParser = bodyParser.urlencoded({extended: false});
+  
+  app.get('/', (req, res) => {
+    res.render('index');
+    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  });
+
+  app.get('/index', (req, res) => {
+    res.render('index');
+    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  });
+  
+  app.get('/chat', (req, res) => {
+    res.render('chat');
+    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  });
+  
+  app.post('/signin', (req, res) => {
+    res.render('signin');
+    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  });
+  
+  app.post('/signin', urlencodedParser, (req, res) => {
+    res.render('signin');
+    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  });
+  
+  app.post('/signup', (req, res) => {
+    res.render('signup');
+    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  });
+  
+  app.post('/signup', urlencodedParser, (req, res) => {
+    res.render('signup');
+    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  });
+  
+  app.get('*', (req, res) => {
+    res.render('404');
+    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
+  });
   
 };
