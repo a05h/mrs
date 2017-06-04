@@ -7,7 +7,7 @@ module.exports = (app) => {
     res.render('index');
     console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
   });
-
+  
   app.get('/index', (req, res) => {
     res.render('index');
     console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
