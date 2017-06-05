@@ -28,16 +28,6 @@ module.exports = (app) => {
     console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
   });
   
-  app.post('/signup', (req, res) => {
-    res.render('signup');
-    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
-  });
-  
-  app.post('/signup', urlencodedParser, (req, res) => {
-    res.render('signup');
-    console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);
-  });
-  
   app.get('*', (req, res) => {
     res.render('404');
     console.log(`Request: ${req.url}, status: ${res.statusCode} - ${res.statusMessage}`);

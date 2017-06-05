@@ -9,8 +9,11 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 
-route(app);
-socketStream(app);
-app.listen(3000);
+var server = http.createServer(app);
 
-console.log('Listening port: 3000');
+route(app);
+socketStream(app, server);
+
+server.listen(3000, () => {
+  console.log('Listening port: 3000');
+});
