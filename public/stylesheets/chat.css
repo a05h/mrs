@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ebebeb;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#messages li { 
+  padding: 3px 12px;
+  font: 14px Helvetica, Arial;
+  color: #1f1f1f;
+}
+
+form { 
+  border-top: 1px solid #c1c1c1;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#m {
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font: 16px Helvetica, Arial;
+  color: #1f1f1f;
+}
